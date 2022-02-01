@@ -1,0 +1,6 @@
+<apex:page controller="AccountListController" lightningStylesheets="true">
+    <apex:form>
+        <apex:commandButton value="Go To Account Page" action="{!GoToLightningPage}" styleClass="slds-vf-button_brand" />
+        <apex:detail subject="{!$CurrentPage.parameters.id}" relatedList="true" title="true" />
+    </apex:form>
+</apex:page>

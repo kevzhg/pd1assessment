@@ -1,0 +1,80 @@
+<apex:page controller="AccountListController" lightningStylesheets="true" showheader="false">
+    <style>
+        .fsWrapper {
+            width: 1700px;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-weight: bold;
+            margin: auto;
+            font-size: 1.8em;
+        }
+
+        .dataTable {
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+
+        .bold {
+            margin: 0 auto;
+            font-weight: bold;
+            background-color: rgb(128, 167, 219);
+        }
+
+        .lightblue {
+            background-color: rgba(233, 237, 245, 255)
+        }
+
+        .darkerBlue {
+            background-color: rgba(208, 216, 234, 255)
+        }
+
+        a:link {
+            font-weight: bold;
+            color: rgb(80, 79, 79)
+        }
+    </style>
+
+    <apex:form styleClass="fsWrapper">
+        <apex:image url="{!$Resource.AWLogo}" />
+        <p class="title">Service Vendor Accounts</p>
+        <apex:pageBlock>
+            <apex:pageBlockTable value="{!accounts}" var="acc">
+                <apex:column styleClass="bold">
+                    <apex:facet name="header">
+                        <b>Service Vendor Account Name</b>
+                    </apex:facet>
+                    <apex:commandLink value="{!acc.name}" action="{!GoToDetail}">
+                        <apex:param name="accid" value="{!acc.id}" assignTo="{!accid}" />
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column value="{!acc.BillingStreet}" styleClass="lightblue">
+                    <apex:facet name="header">
+                        <b>Address</b>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!acc.Industry}" styleClass="darkerBlue">
+                    <apex:facet name="header">
+                        <b>Industry</b>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!acc.AnnualRevenue}" styleClass="lightblue">
+                    <apex:facet name="header">
+                        <b>Annual Revenue</b>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!acc.NumberOfEmployees}" styleClass="darkerBlue">
+                    <apex:facet name="header">
+                        <b>Number Of Employees</b>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!acc.Description}" styleClass="lightblue">
+                    <apex:facet name="header">
+                        <b>Description</b>
+                    </apex:facet>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
